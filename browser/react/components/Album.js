@@ -4,12 +4,6 @@ import Songs from '../components/Songs';
 class Album extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      album: props.album,
-      currentSong: props.curentSong,
-      isPlaying: props.isPlaying,
-      toggleOne: props.toggleOne
-    }
   }
   componentDidMount() {
     const { albumId } = this.props.routeParams;
@@ -19,18 +13,17 @@ class Album extends React.Component {
     selectAlbum(albumId);
   }
   render() {
-    const album = this.state.selectedAlbum.name || this.state.album.name;
     return (
       <div className="album">
         <div>
-          <h3>{ this.state.album.name  }</h3>
-          <img src={ this.state.album.imageUrl } className="img-thumbnail" />
+          <h3>{ this.props.album.name  }</h3>
+          <img src={ this.props.album.imageUrl } className="img-thumbnail" />
         </div>
         <Songs
-          songs={this.state.album.songs}
-          currentSong={this.state.currentSong}
-          isPlaying={this.state.isPlaying}
-          toggleOne={this.state.toggleOne} />
+          songs={this.props.album.songs}
+          currentSong={this.props.currentSong}
+          isPlaying={this.props.isPlaying}
+          toggleOne={this.props.toggleOne} />
       </div>
     );
   }
